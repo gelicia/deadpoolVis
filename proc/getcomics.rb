@@ -32,6 +32,7 @@ puts comicCount.to_s + " " + loopCount.to_s
 incrementor = 0
 while incrementor <= loopCount
 	puts "offset = " + ((incrementor + 1) * 100).to_s
+	time = Time.now.to_i
 	url = URI('http://gateway.marvel.com/v1/public/characters/' + config['superheroID'] + '/comics')
 	params = {
 	  :ts => time,
@@ -49,4 +50,6 @@ while incrementor <= loopCount
 	incrementor += 1
 end
 
-puts allResults
+config_path = File.expand_path("../../data/comics.json", __FILE__)
+outfile = File.open(config_path, 'w')
+outfile.write(allResults.to_json)
