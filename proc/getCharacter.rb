@@ -18,11 +18,7 @@ url.query = URI.encode_www_form(params)
 
 resp = Net::HTTP.get_response(url)
 jsonResp = JSON.parse(resp.body)['data']['results']
-["comics", "events", "series", "stories"].each { |k| jsonResp.delete(k) }
-#jsonResp.delete("comics")
-#jsonResp.delete("events")
-#jsonResp.delete("series")
-#jsonResp.delete("stories")
+["comics", "events", "series", "stories"].each { |k| jsonResp[0].delete(k) }
 
 config_path = File.expand_path("../../data/character.json", __FILE__)
 outfile = File.open(config_path, 'w')
