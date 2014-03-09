@@ -3,6 +3,18 @@ d3.selection.prototype.moveToFront = function() {
     this.parentNode.appendChild(this);
   });
 };
+
+function loadData(){
+	loadCharacter();
+	loadComics();
+}
+
+function loadCharacter(){
+	d3.json('./data/character.json', function(err, data){
+		console.log(data);
+	});
+}
+
 //["onsaleDate", "focDate", "unlimitedDate", "digitalPurchaseDate"] 
 function loadComics(){
 	d3.json('./data/comics.json', function(err, data){
@@ -28,7 +40,5 @@ function loadComics(){
 			}
 			else { return 0;}
 		});
-
-		console.log(data);
 	});
 }
