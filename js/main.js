@@ -12,6 +12,28 @@ function loadData(){
 function loadCharacter(){
 	d3.json('./data/character.json', function(err, data){
 		console.log(data);
+		data = data[0];
+		var charName = d3.select("#charName");
+		charName.text(data.name);
+
+		if (data.description === ""){
+			data.description = "No description available.";
+		}
+		var url = _.find(data.urls, function(d){return d.type == 'wiki';}).url;
+
+		if (url !== undefined){ 
+			data.description += "<br/><a href=\"" + url + "\">See the article for " + data.name + " in the Marvel Universe Wiki</a> ";	
+		}
+
+		console.log(charName.node());
+
+		d3.select("#charDesc").html(data.description);
+		d3.select("img#charImg").attr({
+			"src": data.thumbnail.path + "." + data.thumbnail.extension,
+			height: "100px",
+			width: "100px"
+			//"style" : "left: " + 
+		}).classed("thumbPic", true);
 	});
 }
 
@@ -40,5 +62,7 @@ function loadComics(){
 			}
 			else { return 0;}
 		});
+
+		console.log(data);
 	});
 }

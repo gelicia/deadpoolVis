@@ -86,44 +86,7 @@ div#intro {
     text-align: center;
   }
 
-div#countrySelectDiv{
-	display: inline-block;
-}
-
-select#countrySelect{
-	width: 200px;
-}
-
-div#countryHeaderInfo{
-	z-index: 10;
+img#charImg {
 	position: absolute;
-	display: inline-block;
-	padding-top: 10px;
-	padding-left: 10px;
-}
-
-#mapDiv {
-	z-index: 1;
-	position: absolute;
-	top: 50;
-}
-
-svg#mapMain {
-	width : 650px;
-	height : 430px;
-}
-
-.validCountry {
-	fill: #FFF;
-}
-
-.invalidCountry {
-	fill: #CCC;
-}
-
-.selectedCountry {
-	fill: #6B66D4;
-	stroke: #5A55B5;
-	/*stroke-width: 15px;
-	stroke-linejoin: round;*/
+	top: 10px;
 }
